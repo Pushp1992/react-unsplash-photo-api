@@ -1,23 +1,35 @@
 import React, { useEffect } from 'react';
 import { Container, Row, Col, Button, InputGroup, FormControl } from 'react-bootstrap';
+import ImageList from '../ImageList/imageList';
 import UnSplashService from '../../utils/service';
+import CustomToastr from '../../utils/toastr';
 
 import "../SearchComponent/search.css";
 
 function SearchImage() {
-    const [searchkeyword, setSearchkeyword] = React.useState('')
+    const [searchkeyword, setSearchkeyword] = React.useState('');
+    const [keyWordProps, setKeyWordProps] = React.useState('');
 
     const searchByKeyWord = event => {
         event.preventDefault();
+        
         let keyword;
 
-        if (event.currentTarget.id === "searchBox") {
-            keyword = event.currentTarget.id;
+        if(event.currentTarget.id !== "") setSearchkeyword('');
+
+        if (searchkeyword !== "") {
+            keyword = searchkeyword;
         } else {
             keyword = event.currentTarget.id;
         }
 
-        console.log('keyword', keyword)
+        if(keyword !== "" && keyword !== undefined)  passPropsToChild(keyword);
+    }
+
+    const passPropsToChild = (keyword) => {
+        setKeyWordProps(keyword);
+        debugger;
+        console.log('keyWordProps', keyWordProps)
     }
 
     return (
@@ -61,6 +73,9 @@ function SearchImage() {
                         </InputGroup>
                     </Col>
                 </Row>
+            </div>
+            <div>
+                <ImageList keyword={keyWordProps} />
             </div>
         </Container>
     )
