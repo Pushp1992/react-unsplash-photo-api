@@ -1,0 +1,29 @@
+#parent {
+    background-color: whitesmoke;
+}
+
+#firstWord {
+  font-size: 3rem;
+  font-weight: bold;
+  color: red;
+}
+
+#secondWord {
+  font-size: 4rem;
+  font-weight: bold;
+  color: blueviolet;
+}
+
+#heading1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: black;
+}
+
+#heading2 {
+    font-size: 2rem;
+    font-weight: normal;
+    color:black;
+    /* display: flex;
+    text-align: left; */
+}
