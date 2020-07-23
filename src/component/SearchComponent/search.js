@@ -12,10 +12,10 @@ function SearchImage() {
 
     const searchByKeyWord = event => {
         event.preventDefault();
-        
+
         let keyword;
 
-        if(event.currentTarget.id !== "") setSearchkeyword('');
+        if (event.currentTarget.id !== "") setSearchkeyword('');
 
         if (searchkeyword !== "") {
             keyword = searchkeyword;
@@ -23,7 +23,7 @@ function SearchImage() {
             keyword = event.currentTarget.id;
         }
 
-        if(keyword !== "" && keyword !== undefined)  passPropsToChild(keyword);
+        if (keyword !== "" && keyword !== undefined) passPropsToChild(keyword);
     }
 
     const passPropsToChild = (keyword) => {
@@ -74,7 +74,7 @@ function SearchImage() {
                     </Col>
                 </Row>
             </div>
-            <div>
+            <div id="child">
                 <ImageList keyword={keyWordProps} />
             </div>
         </Container>
