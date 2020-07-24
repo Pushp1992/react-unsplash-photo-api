@@ -1,14 +1,16 @@
-# This repository is meant for VIACOM-18
+# This repository is meant for UNSPLASH-API
 
 Runs the app in the development mode.<br>
 Open [http://localhost:7000](http://localhost:7000) to view it in the browser.
 
 
-* It inlcudes 3 Input Fields
+* It inlcudes Following features
 
-1. Entering gene symbol e.g. BRAF.
-2. Entering position in a protein sequence e.g. 600.
-3. Entering amino acid letter e.g. V
+1. Getting random photos on every reload
+2. Displaying 9 images Per page
+3. Added pagination features.
+4. Search image by keyword.
+5. Search image by search field
 
 * Setup: Procedure:
 

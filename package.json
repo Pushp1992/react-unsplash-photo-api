@@ -1,8 +1,8 @@
 {
-  "name": "viacom-18",
+  "name": "unsplash-api",
   "version": "0.1.0",
   "author": "Pushp Singh <pushp.ranjansingh@gmail.com>",
-  "description": "Getting all gene information",
+  "description": "Getting all photo and pagination",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
