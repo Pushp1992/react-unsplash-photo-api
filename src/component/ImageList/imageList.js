@@ -48,16 +48,16 @@ const ImageList = ({ keyword }) => {
     }
 
     const handlePageChange = (page) => {
-        setPageNumber(page)
+        setPageNumber(page);
     }
 
-    let mdSize = {
+    let paginationProps = {
         totalPages: totalPage,
         currentPage: pageNumber,
         showMax: 8,
         threeDots: true,
         prevNext: true,
-        onClick: function (page) {
+        onClick: (page) => {
             handlePageChange(page)
         }
     };
@@ -105,7 +105,7 @@ const ImageList = ({ keyword }) => {
             </div>
 
             <div id="paginationStyle">
-                <Pagination {...mdSize} shadow circle />
+                <Pagination {...paginationProps} shadow circle />
             </div>
 
             <Modal id="modal" isOpen={modal} modalTransition={{ timeout: 400 }} backdropTransition={{ timeout: 900 }} toggle={toggle}>

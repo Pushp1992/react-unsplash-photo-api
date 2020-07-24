@@ -1,5 +1,5 @@
 #parent {
-    background-color: whitesmoke;
+  /* background-color: whitesmoke; */
 }
 
 #firstWord {
@@ -21,9 +21,22 @@
 }
 
 #heading2 {
-    font-size: 2rem;
-    font-weight: normal;
-    color:black;
-    /* display: flex;
+  font-size: 2rem;
+  font-weight: normal;
+  color: black;
+  /* display: flex;
     text-align: left; */
+}
+
+#child1 {
+    /* position: relative; */
+}
+
+#child2 {
+  /* z-index: 1; */
+  /* margin-top: 50px; */
+/*   
+  position: absolute;
+  top: 5rem;
+  right: 5rem; */
 }
