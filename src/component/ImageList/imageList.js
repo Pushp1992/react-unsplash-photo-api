@@ -4,6 +4,7 @@ import { Container, Row, Col, Button, Card, CardImg, CardImgOverlay, Modal, Moda
 import Pagination from 'react-bootstrap-4-pagination';
 import CustomToastr from '../../utils/toastr';
 import UnSplashService from '../../utils/service';
+
 import "../ImageList/imageList.css";
 
 Container.propTypes = {
@@ -89,7 +90,7 @@ const ImageList = ({ keyword }) => {
                                                 <span id="firstspan">Image By </span>
                                                 <span id="secondspan"> {imageData.user.instagram_username}</span>
                                                 <br />
-                                                <Button name={imageData.links.download_location} id={imageData.urls.regular} outline color="danger" onClick={openImage}>View</Button>
+                                                <Button name={imageData.links.download} id={imageData.urls.regular} outline color="danger" onClick={openImage}>View</Button>
                                             </CardImgOverlay>
                                         </Card>
                                     </Col>
@@ -108,9 +109,11 @@ const ImageList = ({ keyword }) => {
             </div>
 
             <Modal id="modal" isOpen={modal} modalTransition={{ timeout: 400 }} backdropTransition={{ timeout: 900 }} toggle={toggle}>
-                <img src={imageUrl} alt='image' />
+                <img id="viewableImage" src={imageUrl} alt='image' />
                 <div>
-                    <Button color="success" onClick={toggle}>Download</Button>{' '}
+                    <a href={downloadUrl} download>
+                        <Button color="success">Download</Button>{' '}
+                    </a>
                     <Button outline color="danger" onClick={toggle}>Cancel</Button>
                 </div>
             </Modal>

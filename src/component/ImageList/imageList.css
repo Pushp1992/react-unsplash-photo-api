@@ -13,6 +13,11 @@
     height: 60px;
 }
 
+#viewableImage {
+    width: 1080px;
+    height: 600px;
+}
+
 #profileImage {
     display: block;
     margin-top: 12rem;
