@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Button, InputGroup, FormControl, Card, CardImg, CardImgOverlay, CardFooter } from 'reactstrap';
+import { Container, Row, Col, Button, Card, CardImg, CardImgOverlay, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Pagination from 'react-bootstrap-4-pagination';
 import CustomToastr from '../../utils/toastr';
 import UnSplashService from '../../utils/service';
@@ -22,6 +22,9 @@ const ImageList = ({ keyword }) => {
     const [pageNumber, setPageNumber] = React.useState(1);
     const [searchInput, setSearchInput] = React.useState();
     const [imageResult, setImageResult] = React.useState([]);
+    const [modal, setModal] = React.useState(false);
+    const [imageUrl, setImageUrl] = React.useState('');
+    const [downloadUrl, setDownloadUrl] = React.useState('')
 
     useEffect(() => {
         getImageList(pageNumber, itemPerPage, keyword)
@@ -57,7 +60,18 @@ const ImageList = ({ keyword }) => {
             handlePageChange(page)
         }
     };
-    console.log('imageResult', imageResult)
+
+    const openImage = event => {
+        toggle();
+        let image = event.currentTarget.id;
+        let downloadLink = event.currentTarget.name;
+        setImageUrl(image);
+        setDownloadUrl(downloadLink);
+        console.log(image)
+    }
+
+    const toggle = () => setModal(!modal);
+
     return (
         <Container fluid>
             <br /><br /><br />
@@ -74,6 +88,8 @@ const ImageList = ({ keyword }) => {
                                                 <img id="userimage" src={imageData.user.profile_image.large} />
                                                 <span id="firstspan">Image By </span>
                                                 <span id="secondspan"> {imageData.user.instagram_username}</span>
+                                                <br />
+                                                <Button name={imageData.links.download_location} id={imageData.urls.regular} outline color="danger" onClick={openImage}>View</Button>
                                             </CardImgOverlay>
                                         </Card>
                                     </Col>
@@ -90,6 +106,14 @@ const ImageList = ({ keyword }) => {
             <div id="paginationStyle">
                 <Pagination {...mdSize} shadow circle />
             </div>
+
+            <Modal id="modal" isOpen={modal} modalTransition={{ timeout: 400 }} backdropTransition={{ timeout: 900 }} toggle={toggle}>
+                <img src={imageUrl} alt='image' />
+                <div>
+                    <Button color="success" onClick={toggle}>Download</Button>{' '}
+                    <Button outline color="danger" onClick={toggle}>Cancel</Button>
+                </div>
+            </Modal>
         </Container>
     )
 }
