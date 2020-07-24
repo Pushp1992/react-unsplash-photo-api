@@ -28,12 +28,11 @@ function SearchImage() {
 
     const passPropsToChild = (keyword) => {
         setKeyWordProps(keyword);
-        debugger;
         console.log('keyWordProps', keyWordProps)
     }
 
     return (
-        <Container>
+        <Container fluid>
             <div id="parent">
                 <Row>
                     <Col>

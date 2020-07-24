@@ -21,7 +21,31 @@ const UnSplashService = {
         } catch (error) {
             console.error(error)
         }
-    },  
+    },
+    async getImageList(pageNumber, itemPerPage, keyword) {
+        let encodedURI;
+
+        if(keyword !== "") {
+            encodedURI = window.encodeURI(`/proxy/photos/?query=${keyword}&page=${pageNumber}&per_page=${itemPerPage}&client_id=${CLIENT_ID}`);
+        } else {
+            encodedURI = window.encodeURI(`/proxy/photos/?page=${pageNumber}&per_page=${itemPerPage}&client_id=${CLIENT_ID}`);
+        }
+
+        try {
+            return await axios({
+                method: "GET",
+                url: encodedURI,
+                "headers": {
+                    'Content-Type': "application/json",
+                    "SERVER": "UNSPLASH_API"
+                }
+            }).then(function (response) {
+                return response.data
+            })
+        } catch (error) {
+            console.error(error)
+        }
+    },
 }
 
 export default UnSplashService;
